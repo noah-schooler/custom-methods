@@ -8,7 +8,6 @@ class String
     counter
   end
 
-  # Custom method for reversing a string
   def string_reverse()
     characters = self.split("")
     i = self.length() - 1
@@ -20,7 +19,6 @@ class String
     reversed_characters.join
   end
 
-  # Method that emulates the .[] method of accessing characters from a string; cannot handle assignment
   def string_index(index)
     characters = self.split("")
     reverse_characters = characters.reverse()
@@ -44,7 +42,6 @@ class String
     end
   end
 
-  # Custom method for concatenating two strings
   def string_concat!(string)
     index = self.length
     letters = string.split("")
@@ -64,27 +61,19 @@ class Fixnum
 end
 
 class Array
-  # Custom method to join the elements of an array. Is there a way to make the code for the separator simpler?
   def array_join(sep="")
     joined_array = ""
-    length = self.length - 1
-    counter = 0
+    length = self.length
+    counter = 1
     self.each do |element|
-      if element.class() == String
-        if counter == length
-          joined_array.concat(element)
-        else
-          # Note: #+ creates a new [string?] object, while #concat modifies the existing value
-          joined_array.concat(element + sep)
-          counter += 1
-        end
-      elsif element.class() == Array
+      if element.class() == Array
         joined_array.concat(sub_array_join(sep, length, counter, element))
         counter += 1
       else
         if counter == length
           joined_array.concat(element.to_s)
         else
+          # Note: #+ creates a new [string?] object, while #concat modifies the existing value
           joined_array.concat(element.to_s + sep)
           counter += 1
         end
@@ -95,12 +84,18 @@ class Array
 
   def sub_array_join(sep, length, counter, array)
     joined_array = ""
+    index = 1
     if counter == length
       array.each do |element|
         if element.class() == Array
           joined_array.concat(sub_array_join(sep, length, counter, element))
         else
-        joined_array.concat(element.to_s)
+          if index == array.length
+            joined_array.concat(element.to_s)
+          else
+            index += 1
+            joined_array.concat(element.to_s + sep)
+          end
         end
       end
     else
@@ -111,12 +106,49 @@ class Array
           joined_array.concat(element.to_s + sep)
         end
       end
-      counter += 1
     end
     joined_array
   end
 
-  # Custom method to find the number of elements in an array
+  # def end_array_join(sep, array)
+  #   joined_array = ""
+  #   counter = 1
+  #   array.each do |element|
+  #     if element.class() == Array
+  #       if counter == array.length
+  #         joined_array.concat(end_array_join(sep, element))
+  #       else
+  #         joined_array.concat(mid_array_join(sep, element))
+  #       end
+  #     else
+  #       if counter == array.length
+  #         joined_array.concat(element.to_s)
+  #       else
+  #         counter += 1
+  #         joined_array.concat(element.to_s + sep)
+  #       end
+  #     end
+  #   end
+  #   joined_array
+  # end
+  #
+  # def mid_array_join(sep, array)
+  #   joined_array = ""
+  #   counter = 1
+  #   array.each do |element|
+  #     if element.class() == Array
+  #       if counter == array.length
+  #         joined_array.concat(end_array_join(sep, element))
+  #       else
+  #         joined_array.concat(mid_array_join(sep, element))
+  #       end
+  #     else
+  #       joined_array.concat(element.to_s + sep)
+  #     end
+  #   end
+  #   joined_array
+  # end
+
   def array_length()
     counter = 0
     self.each do |element|
@@ -133,7 +165,6 @@ class Array
         self[i] = self[i] + 1
         i += 1
       else
-        self[i] = element
         i += 1
       end
     end
