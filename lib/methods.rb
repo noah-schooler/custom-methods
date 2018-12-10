@@ -73,7 +73,6 @@ class Array
         if counter == length
           joined_array.concat(element.to_s)
         else
-          # Note: #+ creates a new [string?] object, while #concat modifies the existing value
           joined_array.concat(element.to_s + sep)
           counter += 1
         end
