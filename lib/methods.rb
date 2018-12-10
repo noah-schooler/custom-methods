@@ -109,45 +109,6 @@ class Array
     joined_array
   end
 
-  # def end_array_join(sep, array)
-  #   joined_array = ""
-  #   counter = 1
-  #   array.each do |element|
-  #     if element.class() == Array
-  #       if counter == array.length
-  #         joined_array.concat(end_array_join(sep, element))
-  #       else
-  #         joined_array.concat(mid_array_join(sep, element))
-  #       end
-  #     else
-  #       if counter == array.length
-  #         joined_array.concat(element.to_s)
-  #       else
-  #         counter += 1
-  #         joined_array.concat(element.to_s + sep)
-  #       end
-  #     end
-  #   end
-  #   joined_array
-  # end
-  #
-  # def mid_array_join(sep, array)
-  #   joined_array = ""
-  #   counter = 1
-  #   array.each do |element|
-  #     if element.class() == Array
-  #       if counter == array.length
-  #         joined_array.concat(end_array_join(sep, element))
-  #       else
-  #         joined_array.concat(mid_array_join(sep, element))
-  #       end
-  #     else
-  #       joined_array.concat(element.to_s + sep)
-  #     end
-  #   end
-  #   joined_array
-  # end
-
   def array_length()
     counter = 0
     self.each do |element|
