@@ -35,9 +35,7 @@ end
 
 describe('Array#array_join') do
   it("joins the elements of an array in a single string") do
-    expect([1, 2, 3].array_join).to(eq("123"))
-    expect([1, 2, 3].array_join("-")).to(eq("1-2-3"))
-    expect(['a', ['b', 'c']].array_join("-")).to(eq("a-b-c"))
+    expect(['a', 'b', 'c'].array_join).to(eq("abc"))
     expect([1, [2, 3, [4, 5, [6, 7, 8]]]].array_join(" ")).to(eq("1 2 3 4 5 6 7 8"))
     expect([:symbol, ["a", "b", [1, 2], "c"], "string 'substring'", 2456].array_join(" ")).to(eq("symbol a b 1 2 c string 'substring' 2456"))
   end
