@@ -130,17 +130,27 @@ class Array
     end
   end
 
-  # def array_pop(array)
-  #   new_array = []
-  #   last_index = array.length - 1
-  #   counter = 0
-  #   array.each do |element|
-  #     while counter < last_index - 1
-  #       new_array.push(element)
-  #       counter += 1
-  #     end
-  #   end
-  #   array = new_array
-  #   array[last_index]
-  # end
+  # Currently pops and takes arguments correctly, but does not modify the receiver
+  def array_pop(num=1)
+    i = self.length - 1
+    pop_array = []
+    if num >= self.length
+      self.length.times do
+        pop_array.push(self[i])
+        i -= 1
+      end
+    else
+      num.times do
+        pop_array.push(self[i])
+        i -= 1
+      end
+    end
+    if self == []
+      nil
+    elsif pop_array.length == 1
+      pop_array[0]
+    else
+      pop_array.reverse()
+    end
+  end
 end

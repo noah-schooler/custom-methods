@@ -52,3 +52,12 @@ describe('Array#increment_nums!') do
     expect([17, [2, 3], 'a', 'b', 5].increment_nums!).to(eq([18, [2, 3], 'a', 'b', 6]))
   end
 end
+
+describe('Array#array_pop') do
+  it("returns a designated number of elements from the end of an array") do
+    expect([1,2,3,4,5].array_pop(3)).to(eq([3,4,5]))
+    expect(['a','b','c','d','e'].array_pop()).to(eq('e'))
+    expect(['a','b','c'].array_pop(4)).to(eq(['a','b','c']))
+    expect([].array_pop()).to(eq(nil))
+  end
+end
