@@ -30,7 +30,7 @@ class String
         end
         counter += 1
       end
-    elsif (index < 0) && (index >= self.length() - (self.length() + self.length()))
+    elsif (index < 0) && (index >= self.length() - (self.length() * 2))
       reverse_characters.each do |character|
         if counter - 1 == index
           return character
@@ -42,7 +42,7 @@ class String
     end
   end
 
-  def string_concat(string)
+  def string_concat!(string)
     index = self.length
     letters = string.split("")
     letters.each do |letter|
@@ -130,7 +130,7 @@ class Array
     end
   end
 
-  # Currently pops and takes arguments correctly, but does not modify the receiver
+  # Currently pops and takes arguments, but does not modify the receiver
   def array_pop(num=1)
     i = self.length - 1
     pop_array = []
