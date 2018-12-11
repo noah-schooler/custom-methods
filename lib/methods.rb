@@ -130,27 +130,36 @@ class Array
     end
   end
 
-  # Currently pops and takes arguments, but does not modify the receiver
   def array_pop(num=1)
-    i = self.length - 1
-    pop_array = []
-    if num >= self.length
-      self.length.times do
-        pop_array.push(self[i])
-        i -= 1
-      end
-    else
-      num.times do
-        pop_array.push(self[i])
-        i -= 1
-      end
-    end
     if self == []
       nil
-    elsif pop_array.length == 1
-      pop_array[0]
+    elsif self.length == 1
+      self[0]
     else
-      pop_array.reverse()
+      i = -1
+      length = self.length
+      pop_array = []
+      if num >= self.length
+        self.reverse.each do |element|
+          pop_array.push(element)
+        end
+        length.times do
+          self.delete_at(-1)
+        end
+      else
+        num.times do
+          pop_array.push(self[i])
+          i -= 1
+        end
+        num.times do
+          self.delete_at(-1)
+        end
+      end
+      if pop_array.length == 1
+        pop_array[0]
+      else
+        pop_array.reverse()
+      end
     end
   end
 end
