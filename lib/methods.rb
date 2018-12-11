@@ -42,7 +42,7 @@ class String
     end
   end
 
-  def string_concat!(string)
+  def string_concat(string)
     index = self.length
     letters = string.split("")
     letters.each do |letter|
